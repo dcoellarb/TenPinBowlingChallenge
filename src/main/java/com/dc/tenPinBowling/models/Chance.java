@@ -61,7 +61,6 @@ public class Chance {
   * @param line a String represents the line of the chance in the file.
   */
   public static Chance createFromLine(Integer index, String line)
-    throws IncorrectFormatException
   {
     String[] splittedLine = line.split(" "); // Split line on white space to obtain player name and score
     if (splittedLine.length == 2 && splittedLine[0].length() > 0 && splittedLine[1].toUpperCase().matches("[0-9]|10|F")) {

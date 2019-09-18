@@ -4,4 +4,6 @@ com/dc/tenPinBowling/IncorrectThrowException.class
 com/dc/tenPinBowling/App.class
 com/dc/tenPinBowling/Throw.class
 com/dc/tenPinBowling/IncorrectFormatException.class
+com/dc/tenPinBowling/Game.class
 com/dc/tenPinBowling/IncorrectFileException.class
+com/dc/tenPinBowling/TenPinBowlingGame.class

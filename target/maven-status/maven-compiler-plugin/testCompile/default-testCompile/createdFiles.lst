@@ -1,1 +1,4 @@
-com/dc/tenPinBowling/AppTest.class
+com/dc/tenPinBowling/PlayerTest.class
+com/dc/tenPinBowling/ThrowTest.class
+com/dc/tenPinBowling/ChanceTest.class
+com/dc/tenPinBowling/TenPinBowlingGameTest.class

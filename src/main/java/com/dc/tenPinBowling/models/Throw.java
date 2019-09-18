@@ -22,7 +22,6 @@ public class Throw {
   * @param chance A Chance from where to obtain the score.
   */
   public void setScore(Integer index, Chance chance)
-    throws IncorrectThrowException
   {
     // Setup som temp variables for validations
     Integer lineIndex = chance.getIndex();
@@ -35,8 +34,8 @@ public class Throw {
 
     // Succesful validation adds the score to the list
     if (
-      (_index < 9 && (index == 0 || firstScore < 10 || firstScore + score < 10)) ||
-      (_index >= 9 && (index < 1 || (index == 1 && (firstScore == 10 || firstScore + score <= 10)) || (index == 2 && (firstScore == 10 || secondScore == 100 || firstScore + secondScore == 10)))) 
+      (_index < 9 && index <= 1 && (index == 0 || (firstScore < 10 && firstScore + score <= 10))) ||
+      (_index >= 9 && index <= 2 && (index < 1 || (index == 1 && (firstScore == 10 || firstScore + score <= 10)) || (index == 2 && (firstScore == 10 || secondScore == 100 || firstScore + secondScore == 10)))) 
     ) {
       this._scores[index] = score;
     } else {
@@ -52,7 +51,7 @@ public class Throw {
           // Sum of chances can not add up to more than 10
           throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", the maximun sum of chances is 10, found %s + %s", lineIndex + 1, line, firstScore, score));
         } else {
-          throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", unknow error", lineIndex + 1, line, firstScore, score));
+          throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", unknow error", lineIndex + 1, line));
         }
       // for last throws
       } else {
@@ -70,7 +69,7 @@ public class Throw {
           throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", the first 2 chances of the last throw can not sum more that 10 if the first chance was not 10", lineIndex + 1, line));
         } else {
           // Any other case
-          throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", unknow error", lineIndex + 1, line, firstScore, score));
+          throw new IncorrectThrowException(String.format("Incorrect definition on line %d: \"%s\", unknow error", lineIndex + 1, line));
         }      
       }
     }
@@ -143,10 +142,7 @@ public class Throw {
       } else {
         if (secondScore == 10 && thirdScore == 10) {
           // Print first score then 2 X for second and third if the were 10.
-          return String.format("%-4d%-4s%-4s\n", firstScore, "X", "X");
-        } else if (secondScore + thirdScore == 10) {
-          // Print first score then second and / for third if second and third add up to 10
-          return String.format("%-4d%-4d%-4s\n", firstScore, secondScore, "/");
+          return String.format("%-4d%-4s%-4s\n", firstScore, "/", "X");
         } else if (firstScore + secondScore == 10 && thirdScore < 10) {
           // Print first score then / for second and third score if first and second add up to 10 and third is less than 10
           return String.format("%-4d%-4s%-4d\n", firstScore, "/", thirdScore);
