@@ -18,6 +18,11 @@ Remember to change the file name arguement to try other players and scores
 # To run test
 mvn test
 
+# Bonus tasks completed
+I did use streams and lambdas as explained bellow, in particular i use stream to process the game, meaning all the steps from reading the file to get the playes structure stored. 
+
+I also used lambdas for those streams but also so iterate through some collections.
+
 # Description of the Solution
 To resolve this challenge i model a few classes to represent distinct entities of the solution: TenPinBowlingGame, Player, Throw and Chance
 
